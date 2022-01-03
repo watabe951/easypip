@@ -16,8 +16,14 @@ def sync():
     p = subprocess.Popen(["pip", "install", "-r", "reqirements.lock"])
 
     p.wait()
+def test_pip():
+    # run
+    po = subprocess.Popen(["which", "pip"])
+
+    po.wait()
 
 def main():
+    test_pip()
     # parse
     parser = argparse.ArgumentParser(description="easypip is a thin wrapper of pip")
     parser.add_argument('arg', type=str, nargs='*', help='arguments to pass to pip command')
