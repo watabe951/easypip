@@ -1,8 +1,8 @@
 # easypip
-easypip is a simple wrapper of pip command.
+easypip is a simple wrapper of pip command. easypip = pip + lock + sync.
 
 ## Usage
-
+### install
 ```
 $ easypip install requests
 ```
@@ -15,6 +15,7 @@ $ pip install requests
 $ pip freeze --all > requirements.lock
 ```
 
+### lock
 You can also lock manually by
 
 ```
@@ -27,6 +28,7 @@ This is equivarent to
 $ pip freeze --all > requirements.lock
 ```
 
+### sync
 Finally, you can install all of packages in requirements.lock by
 
 ```
