@@ -4,7 +4,6 @@ import argparse
 import os
 
 env = dict(os.environ)
-
 def lock():
     # With --all option, pip freeze command output includes wheel, pip, setuptools. 
     p = subprocess.Popen(["pip", "freeze", "--all"], encoding='utf-8', stdout=subprocess.PIPE, env=env)
@@ -27,6 +26,7 @@ def test_pip():
     po.wait()
 
 def main():
+    print(env)
     test_pip()
     # parse
     parser = argparse.ArgumentParser(description="easypip is a thin wrapper of pip")
