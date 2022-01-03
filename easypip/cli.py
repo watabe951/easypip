@@ -22,14 +22,19 @@ def main():
     parser = argparse.ArgumentParser(description="easypip is a thin wrapper of pip")
     parser.add_argument('arg', type=str, nargs='*', help='arguments to pass to pip command')
     args = parser.parse_args()
+    if len(args.arg) == 0:
+        executable = ["pip"] + args.arg
+        # run
+        po = subprocess.Popen(executable)
 
+        po.wait()
+        return
     if args.arg[0] == "sync":
         sync()
     elif args.arg[0] == "lock":
         lock()
     elif args.arg[0] == "install":
         executable = ["pip"] + args.arg
-        print(executable)
         # run
         po = subprocess.Popen(executable)
 
@@ -38,7 +43,6 @@ def main():
         lock()
     elif args.arg[0] == "uninstall":
         executable = ["pip"] + args.arg
-        print(executable)
         # run
         po = subprocess.Popen(executable)
 
