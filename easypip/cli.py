@@ -63,10 +63,8 @@ def main():
         executable = ["pip"] + args.arg
         print(executable)
         # run
-        po = subprocess.Popen(executable, encoding='utf-8', stdout=subprocess.PIPE, env=env, shell=True)
+        po = subprocess.Popen(executable, encoding='utf-8', env=env, shell=True)
 
         po.wait()
-        lines = po.stdout.readlines()
-        print(lines)
 if __name__ == "__main__":
     main()
