@@ -11,7 +11,7 @@ def lock():
     with open("reqirements.lock", "w") as f:
         for line in lines:
             f.write(line)
-def sync(args):
+def sync():
     # run
     p = subprocess.Popen(["pip", "install", "-r", "reqirements.lock"])
 
@@ -24,9 +24,9 @@ def main():
     args = parser.parse_args()
 
     if args.arg[0] == "sync":
-        sync(args)
+        sync()
     elif args.arg[0] == "lock":
-        lock(args)
+        lock()
     elif args.arg[0] == "install":
         executable = ["pip"] + args.arg
         print(executable)
