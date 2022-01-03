@@ -29,7 +29,7 @@ def main():
     parser.add_argument('arg', type=str, nargs='*', help='arguments to pass to pip command')
     args = parser.parse_args()
     if len(args.arg) == 0:
-        executable = ["pip"] + args.arg
+        executable = ["pip"]
         # run
         po = subprocess.Popen(executable)
 
