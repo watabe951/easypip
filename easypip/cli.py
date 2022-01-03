@@ -6,7 +6,7 @@ import os
 env = dict(os.environ)
 def lock():
     # With --all option, pip freeze command output includes wheel, pip, setuptools. 
-    p = subprocess.Popen(["pip", "freeze", "--all"], encoding='utf-8', stdout=subprocess.PIPE, env=env)
+    p = subprocess.Popen(["pip", "freeze", "--all"], encoding='utf-8', stdout=subprocess.PIPE, env=env, shell=True)
 
     p.wait()
     lines = p.stdout.readlines()
@@ -16,14 +16,15 @@ def lock():
             f.write(line)
 def sync():
     # run
-    p = subprocess.Popen(["pip", "install", "-r", "reqirements.lock"], env=env)
+    p = subprocess.Popen(["pip", "install", "-r", "reqirements.lock"], env=env, shell=True)
 
     p.wait()
 def test_pip():
     # run
-    po = subprocess.Popen(["which", "pip"], env=env)
+    po = subprocess.Popen(["which", "pip"], env=env, shell=True)
 
     po.wait()
+
 
 def main():
     print(env)
@@ -35,7 +36,7 @@ def main():
     if len(args.arg) == 0:
         executable = ["pip"]
         # run
-        po = subprocess.Popen(executable, env=env)
+        po = subprocess.Popen(executable, env=env, shell=True)
 
         po.wait()
         return
@@ -46,7 +47,7 @@ def main():
     elif args.arg[0] == "install":
         executable = ["pip"] + args.arg
         # run
-        po = subprocess.Popen(executable, env=env)
+        po = subprocess.Popen(executable, env=env, shell=True)
 
         po.wait()
         # lock
@@ -54,7 +55,7 @@ def main():
     elif args.arg[0] == "uninstall":
         executable = ["pip"] + args.arg
         # run
-        po = subprocess.Popen(executable, env=env)
+        po = subprocess.Popen(executable, env=env, shell=True)
 
         po.wait()
         # lock
@@ -64,7 +65,7 @@ def main():
         executable = ["pip"] + args.arg
         print(executable)
         # run
-        po = subprocess.Popen(executable, encoding='utf-8', stdout=subprocess.PIPE, env=env)
+        po = subprocess.Popen(executable, encoding='utf-8', stdout=subprocess.PIPE, env=env, shell=True)
 
         po.wait()
         lines = po.stdout.readlines()
