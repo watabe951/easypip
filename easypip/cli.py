@@ -4,6 +4,11 @@ import argparse
 import os
 
 env = dict(os.environ)
+def init():
+    p = subprocess.Popen(["python", "-m", "venv", ".venv"], env=env, shell=True)
+
+    p.wait()
+
 def lock():
     # With --all option, pip freeze command output includes wheel, pip, setuptools. 
     p = subprocess.Popen(["pip", "freeze", "--all"], encoding='utf-8', stdout=subprocess.PIPE, env=env, shell=True)
@@ -58,7 +63,8 @@ def main():
         po.wait()
         # lock
         lock()
-
+    elif args.arg[0] == "init":
+        init()
     else:
         executable = ["pip"] + args.arg
         print(executable)

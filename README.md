@@ -29,7 +29,7 @@ $ pip freeze --all > requirements.lock
 ```
 
 ### sync
-Finally, you can install all of packages in requirements.lock by
+You can install all of packages in requirements.lock by
 
 ```
 $ easypip sync
@@ -39,6 +39,19 @@ This is equivarent to
 
 ```
 $ pip install -r requirements.lock
+```
+
+### init
+You can init virtual environment by 
+
+```
+$ easypip init
+```
+
+This is equivarent to 
+
+```
+$ python -m venv .venv
 ```
 
 Other subcommands (e.g., list, show, ...etc) are as same as original pip.
