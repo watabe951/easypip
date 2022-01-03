@@ -1,7 +1,7 @@
 [project]
-name = ""
-version = ""
-description = ""
+name = "easypip"
+version = "0.1.0"
+description = "simple wrapper of pip command"
 authors = [
     {name = "Yuuya Watabe", email = "watabe951@gmail.com"},
 ]
