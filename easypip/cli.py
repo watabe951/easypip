@@ -27,8 +27,6 @@ def test_pip():
 
 
 def main():
-    print(env)
-    test_pip()
     # parse
     parser = argparse.ArgumentParser(description="easypip is a thin wrapper of pip")
     parser.add_argument('arg', type=str, nargs='*', help='arguments to pass to pip command')
